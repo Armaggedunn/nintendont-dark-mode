@@ -5,6 +5,8 @@
 ### Quick Install:
 1. Download [loader.dol](loader/loader.dol?raw=true), rename to boot.dol and put it in your apps/Nintendont folder on your SD Card.
     * If needed, download [meta.xml](nintendont/meta.xml?raw=true) and [icon.png](nintendont/icon.png?raw=true) and place them in the same folder if you've never installed Nintendont before.
+    
+**Original Nintendont Readme**
 
 ### Nintendont
 A Wii Homebrew Project to play GC Games on Wii and vWii on Wii U
