@@ -61,11 +61,11 @@ static u8 devState = DEV_OK;
 // Disc format colors.
 const u32 DiscFormatColors[8] =
 {
-	WHITE,		// Full
-	0x551A00FF,	// Shrunken (dark brown)
-	0x00551AFF,	// Extracted FST
-	0x001A55FF,	// CISO
-	0x551A55FF,	// Multi-Game
+	0xd3d3d3FF,	// Full
+	0xA56C50FF,	// Shrunken (dark brown)
+	0x50A56AFF,	// Extracted FST
+	0x506AA5FF,	// CISO
+	0xA56AA5FF,	// Multi-Game
 	GRAY,		// undefined
 	GRAY,		// undefined
 	GRAY,		// undefined
@@ -598,7 +598,7 @@ static bool UpdateGameSelectMenu(MenuCtx *ctx)
 		// Down: Move the cursor down by 1 entry.
 		
 		// Remove the current arrow.
-		PrintFormat(DEFAULT_SIZE, WHITE, MENU_POS_X+51*6-8, MENU_POS_Y + 20*6 + ctx->games.posX * 20, " " );
+		PrintFormat(DEFAULT_SIZE, 0xd3d3d3FF, MENU_POS_X+51*6-8, MENU_POS_Y + 20*6 + ctx->games.posX * 20, " " );
 
 		// Adjust the scrolling position.
 		if (ctx->games.posX + 1 >= ctx->games.listMax)
@@ -625,7 +625,7 @@ static bool UpdateGameSelectMenu(MenuCtx *ctx)
 		// Right: Move the cursor down by 1 page.
 
 		// Remove the current arrow.
-		PrintFormat(DEFAULT_SIZE, WHITE, MENU_POS_X+51*6-8, MENU_POS_Y + 20*6 + ctx->games.posX * 20, " " );
+		PrintFormat(DEFAULT_SIZE, 0xd3d3d3FF, MENU_POS_X+51*6-8, MENU_POS_Y + 20*6 + ctx->games.posX * 20, " " );
 
 		// Adjust the scrolling position.
 		if (ctx->games.posX == ctx->games.listMax - 1)
@@ -655,7 +655,7 @@ static bool UpdateGameSelectMenu(MenuCtx *ctx)
 		// Up: Move the cursor up by 1 entry.
 
 		// Remove the current arrow.
-		PrintFormat(DEFAULT_SIZE, WHITE, MENU_POS_X+51*6-8, MENU_POS_Y + 20*6 + ctx->games.posX * 20, " " );
+		PrintFormat(DEFAULT_SIZE, 0xd3d3d3FF, MENU_POS_X+51*6-8, MENU_POS_Y + 20*6 + ctx->games.posX * 20, " " );
 
 		// Adjust the scrolling position.
 		if (ctx->games.posX <= 0)
@@ -686,7 +686,7 @@ static bool UpdateGameSelectMenu(MenuCtx *ctx)
 		// Left: Move the cursor up by 1 page.
 
 		// Remove the current arrow.
-		PrintFormat(DEFAULT_SIZE, WHITE, MENU_POS_X+51*6-8, MENU_POS_Y + 20*6 + ctx->games.posX * 20, " " );
+		PrintFormat(DEFAULT_SIZE, 0xd3d3d3FF, MENU_POS_X+51*6-8, MENU_POS_Y + 20*6 + ctx->games.posX * 20, " " );
 
 		// Adjust the scrolling position.
 		if (ctx->games.posX == 0)
@@ -1119,9 +1119,9 @@ static bool UpdateSettingsMenu(MenuCtx *ctx)
 	{
 		// Down: Move the cursor down by 1 setting.
 		if (ctx->settings.settingPart == 0) {
-			PrintFormat(MENU_SIZE, WHITE, MENU_POS_X+30, SettingY(ctx->settings.posX), " " );
+			PrintFormat(MENU_SIZE, 0xd3d3d3FF, MENU_POS_X+30, SettingY(ctx->settings.posX), " " );
 		} else {
-			PrintFormat(MENU_SIZE, WHITE, MENU_POS_X+300, SettingY(ctx->settings.posX), " " );
+			PrintFormat(MENU_SIZE, 0xd3d3d3FF, MENU_POS_X+300, SettingY(ctx->settings.posX), " " );
 		}
 
 		ctx->settings.posX++;
@@ -1160,9 +1160,9 @@ static bool UpdateSettingsMenu(MenuCtx *ctx)
 	{
 		// Up: Move the cursor up by 1 setting.
 		if (ctx->settings.settingPart == 0) {
-			PrintFormat(MENU_SIZE, WHITE, MENU_POS_X+30, SettingY(ctx->settings.posX), " " );
+			PrintFormat(MENU_SIZE, 0xd3d3d3FF, MENU_POS_X+30, SettingY(ctx->settings.posX), " " );
 		} else {
-			PrintFormat(MENU_SIZE, WHITE, MENU_POS_X+300, SettingY(ctx->settings.posX), " " );
+			PrintFormat(MENU_SIZE, 0xd3d3d3FF, MENU_POS_X+300, SettingY(ctx->settings.posX), " " );
 		}
 
 		ctx->settings.posX--;
@@ -1369,8 +1369,8 @@ static bool UpdateSettingsMenu(MenuCtx *ctx)
 			// Blank out the memory card options if MCEMU is disabled.
 			if (!(ncfg->Config & NIN_CFG_MEMCARDEMU))
 			{
-				PrintFormat(MENU_SIZE, WHITE, MENU_POS_X + 50, SettingY(NIN_SETTINGS_MEMCARDBLOCKS), "%29s", "");
-				PrintFormat(MENU_SIZE, WHITE, MENU_POS_X + 50, SettingY(NIN_SETTINGS_MEMCARDMULTI), "%29s", "");
+				PrintFormat(MENU_SIZE, 0xd3d3d3FF, MENU_POS_X + 50, SettingY(NIN_SETTINGS_MEMCARDBLOCKS), "%29s", "");
+				PrintFormat(MENU_SIZE, 0xd3d3d3FF, MENU_POS_X + 50, SettingY(NIN_SETTINGS_MEMCARDMULTI), "%29s", "");
 			}
 			ctx->redraw = true;
 		}
@@ -1447,10 +1447,10 @@ static bool UpdateSettingsMenu(MenuCtx *ctx)
 		{
 			if (ListLoopIndex == NIN_CFG_BIT_USB) {
 				// USB option is replaced with Wii U widescreen.
-				PrintFormat(MENU_SIZE, (IsWiiU() ? WHITE : DARK_GRAY), MENU_POS_X+50, SettingY(ListLoopIndex),
+				PrintFormat(MENU_SIZE, (IsWiiU() ? 0xd3d3d3FF : DARK_GRAY), MENU_POS_X+50, SettingY(ListLoopIndex),
 					    "%-18s:%s", OptionStrings[ListLoopIndex], (ncfg->Config & (NIN_CFG_WIIU_WIDE)) ? "On " : "Off");
 			} else {
-				u32 item_color = WHITE;
+				u32 item_color = 0xd3d3d3FF;
 				if (IsWiiU() &&
 				    (ListLoopIndex == NIN_CFG_BIT_DEBUGGER ||
 				     ListLoopIndex == NIN_CFG_BIT_DEBUGWAIT ||
@@ -1467,7 +1467,7 @@ static bool UpdateSettingsMenu(MenuCtx *ctx)
 		// Maximum number of emulated controllers.
 		// Not available on Wii U.
 		// TODO: Disable on RVL-101?
-		PrintFormat(MENU_SIZE, (!IsWiiU() ? WHITE : DARK_GRAY), MENU_POS_X+50, SettingY(ListLoopIndex),
+		PrintFormat(MENU_SIZE, (!IsWiiU() ? 0xd3d3d3FF : DARK_GRAY), MENU_POS_X+50, SettingY(ListLoopIndex),
 			    "%-18s:%d", OptionStrings[ListLoopIndex], (ncfg->MaxPads));
 		ListLoopIndex++;
 
@@ -1476,7 +1476,7 @@ static bool UpdateSettingsMenu(MenuCtx *ctx)
 		if (LanIndex < NIN_LAN_FIRST || LanIndex >= NIN_LAN_LAST) {
 			LanIndex = NIN_LAN_LAST; //Auto
 		}
-		PrintFormat(MENU_SIZE, WHITE, MENU_POS_X+50, SettingY(ListLoopIndex),
+		PrintFormat(MENU_SIZE, 0xd3d3d3FF, MENU_POS_X+50, SettingY(ListLoopIndex),
 			    "%-18s:%-4s", OptionStrings[ListLoopIndex], LanguageStrings[LanIndex] );
 		ListLoopIndex++;
 
@@ -1503,7 +1503,7 @@ static bool UpdateSettingsMenu(MenuCtx *ctx)
 				VideoModeIndex = NIN_VID_INDEX_AUTO;
 				break;
 		}
-		PrintFormat(MENU_SIZE, WHITE, MENU_POS_X+50, SettingY(ListLoopIndex),
+		PrintFormat(MENU_SIZE, 0xd3d3d3FF, MENU_POS_X+50, SettingY(ListLoopIndex),
 			    "%-18s:%-18s", OptionStrings[ListLoopIndex], VideoStrings[VideoModeIndex] );
 		ListLoopIndex++;
 
@@ -1523,7 +1523,7 @@ static bool UpdateSettingsMenu(MenuCtx *ctx)
 				ncfg->VideoMode |= NIN_VID_FORCE_NTSC;
 				VideoModeIndex = NIN_VID_INDEX_FORCE_NTSC;
 			}
-			PrintFormat(MENU_SIZE, WHITE, MENU_POS_X+50, SettingY(ListLoopIndex),
+			PrintFormat(MENU_SIZE, 0xd3d3d3FF, MENU_POS_X+50, SettingY(ListLoopIndex),
 				    "%-18s:%-5s", OptionStrings[ListLoopIndex], VideoModeStrings[VideoModeIndex] );
 		}
 		ListLoopIndex++;
@@ -1535,16 +1535,16 @@ static bool UpdateSettingsMenu(MenuCtx *ctx)
 			if (MemCardBlocksVal > MEM_CARD_MAX) {
 				MemCardBlocksVal = 0;
 			}
-			PrintFormat(MENU_SIZE, WHITE, MENU_POS_X + 50, SettingY(ListLoopIndex),
+			PrintFormat(MENU_SIZE, 0xd3d3d3FF, MENU_POS_X + 50, SettingY(ListLoopIndex),
 				    "%-18s:%-4d%s", OptionStrings[ListLoopIndex], MEM_CARD_BLOCKS(MemCardBlocksVal), MemCardBlocksVal > 2 ? "Unstable" : "");
-			PrintFormat(MENU_SIZE, WHITE, MENU_POS_X + 50, SettingY(ListLoopIndex+1),
+			PrintFormat(MENU_SIZE, 0xd3d3d3FF, MENU_POS_X + 50, SettingY(ListLoopIndex+1),
 				    "%-18s:%-4s", OptionStrings[ListLoopIndex+1], (ncfg->Config & (NIN_CFG_MC_MULTI)) ? "On " : "Off");
 		}
 		ListLoopIndex+=2;
 
 		// Native controllers. (Required for GBA link; disables Bluetooth and USB HID.)
 		// TODO: Gray out on RVL-101?
-		PrintFormat(MENU_SIZE, (IsWiiU() ? DARK_GRAY : WHITE), MENU_POS_X + 50, SettingY(ListLoopIndex),
+		PrintFormat(MENU_SIZE, (IsWiiU() ? DARK_GRAY : 0xd3d3d3FF), MENU_POS_X + 50, SettingY(ListLoopIndex),
 			    "%-18s:%-4s", OptionStrings[ListLoopIndex],
 			    (ncfg->Config & (NIN_CFG_NATIVE_SI)) ? "On " : "Off");
 		ListLoopIndex++;
@@ -1574,40 +1574,40 @@ static bool UpdateSettingsMenu(MenuCtx *ctx)
 		else
 			snprintf(netProfile, sizeof(netProfile), "%i", ncfg->NetworkProfile);
 
-		PrintFormat(MENU_SIZE, WHITE, MENU_POS_X + 320, SettingY(ListLoopIndex),
+		PrintFormat(MENU_SIZE, 0xd3d3d3FF, MENU_POS_X + 320, SettingY(ListLoopIndex),
 			    "%-18s:%-4s", "Video Width", vidWidth);
 		ListLoopIndex++;
-		PrintFormat(MENU_SIZE, WHITE, MENU_POS_X + 320, SettingY(ListLoopIndex),
+		PrintFormat(MENU_SIZE, 0xd3d3d3FF, MENU_POS_X + 320, SettingY(ListLoopIndex),
 			    "%-18s:%-4s", "Screen Position", vidOffset);
 		ListLoopIndex++;
 
 		// Patch PAL60.
-		PrintFormat(MENU_SIZE, WHITE, MENU_POS_X + 320, SettingY(ListLoopIndex),
+		PrintFormat(MENU_SIZE, 0xd3d3d3FF, MENU_POS_X + 320, SettingY(ListLoopIndex),
 			    "%-18s:%-4s", "Patch PAL50", (ncfg->VideoMode & (NIN_VID_PATCH_PAL50)) ? "On " : "Off");
 		ListLoopIndex++;
 
 		// Triforce Arcade Mode.
-		PrintFormat(MENU_SIZE, WHITE, MENU_POS_X + 320, SettingY(ListLoopIndex),
+		PrintFormat(MENU_SIZE, 0xd3d3d3FF, MENU_POS_X + 320, SettingY(ListLoopIndex),
 			    "%-18s:%-4s", "TRI Arcade Mode", (ncfg->Config & (NIN_CFG_ARCADE_MODE)) ? "On " : "Off");
 		ListLoopIndex++;
 
 		// Wiimote CC Rumble
-		PrintFormat(MENU_SIZE, WHITE, MENU_POS_X + 320, SettingY(ListLoopIndex),
+		PrintFormat(MENU_SIZE, 0xd3d3d3FF, MENU_POS_X + 320, SettingY(ListLoopIndex),
 			    "%-18s:%-4s", "Wiimote CC Rumble", (ncfg->Config & (NIN_CFG_CC_RUMBLE)) ? "On " : "Off");
 		ListLoopIndex++;
 
 		// Skip GameCube IPL
-		PrintFormat(MENU_SIZE, WHITE, MENU_POS_X + 320, SettingY(ListLoopIndex),
+		PrintFormat(MENU_SIZE, 0xd3d3d3FF, MENU_POS_X + 320, SettingY(ListLoopIndex),
 			    "%-18s:%-4s", "Skip IPL", (ncfg->Config & (NIN_CFG_SKIP_IPL)) ? "Yes" : "No ");
 		ListLoopIndex++;
 
 		// BBA Emulation
-		PrintFormat(MENU_SIZE, WHITE, MENU_POS_X + 320, SettingY(ListLoopIndex),
+		PrintFormat(MENU_SIZE, 0xd3d3d3FF, MENU_POS_X + 320, SettingY(ListLoopIndex),
 			    "%-18s:%-4s", "BBA Emulation", (ncfg->Config & (NIN_CFG_BBA_EMU)) ? "On" : "Off");
 		ListLoopIndex++;
 
 		// BBA Network Profile
-		PrintFormat(MENU_SIZE, (IsWiiU() || !(ncfg->Config & (NIN_CFG_BBA_EMU))) ? DARK_GRAY : WHITE,
+		PrintFormat(MENU_SIZE, (IsWiiU() || !(ncfg->Config & (NIN_CFG_BBA_EMU))) ? DARK_GRAY : 0xd3d3d3FF,
 				MENU_POS_X + 320, SettingY(ListLoopIndex),
 			    "%-18s:%-4s", "Network Profile", netProfile);
 		ListLoopIndex++;
@@ -1615,16 +1615,16 @@ static bool UpdateSettingsMenu(MenuCtx *ctx)
 	
 		// Controller slot for the Wii U gamepad.
 		if (ncfg->WiiUGamepadSlot < NIN_CFG_MAXPAD) {
-			PrintFormat(MENU_SIZE, (IsWiiU() ? WHITE : DARK_GRAY), MENU_POS_X+320, SettingY(ListLoopIndex),
+			PrintFormat(MENU_SIZE, (IsWiiU() ? 0xd3d3d3FF : DARK_GRAY), MENU_POS_X+320, SettingY(ListLoopIndex),
 					"%-18s:%d", "WiiU Gamepad Slot", (ncfg->WiiUGamepadSlot + 1));
 		} else {
-			PrintFormat(MENU_SIZE, (IsWiiU() ? WHITE : DARK_GRAY), MENU_POS_X+320, SettingY(ListLoopIndex),
+			PrintFormat(MENU_SIZE, (IsWiiU() ? 0xd3d3d3FF : DARK_GRAY), MENU_POS_X+320, SettingY(ListLoopIndex),
 			"%-18s:%-4s", "WiiU Gamepad Slot", "None");	
 		}
 		ListLoopIndex++;
 
 		// Draw the cursor.
-		u32 cursor_color = WHITE;
+		u32 cursor_color = 0xd3d3d3FF;
 		if (ctx->settings.settingPart == 0) {
 			if ((!IsWiiU() && ctx->settings.posX == NIN_CFG_BIT_USB) ||
 			     (IsWiiU() && ctx->settings.posX == NIN_CFG_NATIVE_SI))
@@ -1650,7 +1650,7 @@ static bool UpdateSettingsMenu(MenuCtx *ctx)
 			do {
 				if (**desc != 0)
 				{
-					PrintFormat(MENU_SIZE, WHITE, MENU_POS_X + 300, SettingY(line_num), *desc);
+					PrintFormat(MENU_SIZE, 0xd3d3d3FF, MENU_POS_X + 300, SettingY(line_num), *desc);
 				}
 				line_num++;
 			} while (*(++desc) != NULL);
@@ -1804,10 +1804,10 @@ static int SelectGame(void)
 				// Game List menu.
 				PrintButtonActions("Go Back", NULL, "Settings", NULL);
 				// If the selected game bootable, enable "Select".
-				u32 color = ((ctx.games.canBeBooted) ? WHITE : DARK_GRAY);
+				u32 color = ((ctx.games.canBeBooted) ? 0xd3d3d3FF : DARK_GRAY);
 				PrintFormat(DEFAULT_SIZE, color, MENU_POS_X + 430, MENU_POS_Y + 20*1, "A   : Select");
 				// If the selected game is not DISC01, enable "Game Info".
-				color = ((ctx.games.canShowInfo) ? WHITE : DARK_GRAY);
+				color = ((ctx.games.canShowInfo) ? 0xd3d3d3FF : DARK_GRAY);
 				PrintFormat(DEFAULT_SIZE, color, MENU_POS_X + 430, MENU_POS_Y + 20*3, "X/1 : Game Info");
 			}
 			else
@@ -1885,10 +1885,10 @@ bool SelectDevAndGame(void)
 			UseSD = (ncfg->Config & NIN_CFG_USB) == 0;
 			PrintInfo();
 			PrintButtonActions("Exit", "Select", NULL, NULL);
-			PrintFormat(DEFAULT_SIZE, WHITE, MENU_POS_X + 53 * 6 - 8, MENU_POS_Y + 20 * 6, UseSD ? ARROW_LEFT : "");
-			PrintFormat(DEFAULT_SIZE, WHITE, MENU_POS_X + 53 * 6 - 8, MENU_POS_Y + 20 * 7, UseSD ? "" : ARROW_LEFT);
-			PrintFormat(DEFAULT_SIZE, WHITE, MENU_POS_X + 47 * 6 - 8, MENU_POS_Y + 20 * 6, " SD  ");
-			PrintFormat(DEFAULT_SIZE, WHITE, MENU_POS_X + 47 * 6 - 8, MENU_POS_Y + 20 * 7, "USB  ");
+			PrintFormat(DEFAULT_SIZE, 0xd3d3d3FF, MENU_POS_X + 53 * 6 - 8, MENU_POS_Y + 20 * 6, UseSD ? ARROW_LEFT : "");
+			PrintFormat(DEFAULT_SIZE, 0xd3d3d3FF, MENU_POS_X + 53 * 6 - 8, MENU_POS_Y + 20 * 7, UseSD ? "" : ARROW_LEFT);
+			PrintFormat(DEFAULT_SIZE, 0xd3d3d3FF, MENU_POS_X + 47 * 6 - 8, MENU_POS_Y + 20 * 6, " SD  ");
+			PrintFormat(DEFAULT_SIZE, 0xd3d3d3FF, MENU_POS_X + 47 * 6 - 8, MENU_POS_Y + 20 * 7, "USB  ");
 			redraw = false;
 
 			// Render the screen here to prevent a blank frame
@@ -1935,7 +1935,7 @@ void ShowMessageScreen(const char *msg)
 
 	ClearScreen();
 	PrintInfo();
-	PrintFormat(DEFAULT_SIZE, WHITE, x, 232, "%s", msg);
+	PrintFormat(DEFAULT_SIZE, 0xd3d3d3FF, x, 232, "%s", msg);
 	GRRLIB_Render();
 	ClearScreen();
 }
@@ -1949,7 +1949,7 @@ void ShowMessageScreenAndExit(const char *msg, int ret)
 {
 	const int len = strlen(msg);
 	const int x = (640 - (len*10)) / 2;
-	const u32 color = (ret == 0 ? WHITE : MAROON);
+	const u32 color = (ret == 0 ? 0xd3d3d3FF : 0xFF7C7CFF);
 
 	ClearScreen();
 	PrintInfo();
@@ -1965,14 +1965,14 @@ void PrintInfo(void)
 	const char *consoleType = (isWiiVC ? (IsWiiUFastCPU() ? "WiiVC 5x CPU" : "Wii VC") : (IsWiiUFastCPU() ? "WiiU 5x CPU" : (IsWiiU() ? "Wii U" : "Wii")));
 #ifdef NIN_SPECIAL_VERSION
 	// "Special" version with customizations. (Not mainline!)
-	PrintFormat(DEFAULT_SIZE, WHITE, MENU_POS_X, MENU_POS_Y + 20*0, "Nintendont Loader v%u.%u" NIN_SPECIAL_VERSION " (%s)",
+	PrintFormat(DEFAULT_SIZE, 0xd3d3d3FF, MENU_POS_X, MENU_POS_Y + 20*0, "Nintendont Loader v%u.%u" NIN_SPECIAL_VERSION " (%s)",
 		    NIN_VERSION>>16, NIN_VERSION&0xFFFF, consoleType);
 #else
-	PrintFormat(DEFAULT_SIZE, WHITE, MENU_POS_X, MENU_POS_Y + 20*0, "Nintendont Loader v%u.%u (%s)",
+	PrintFormat(DEFAULT_SIZE, 0xd3d3d3FF, MENU_POS_X, MENU_POS_Y + 20*0, "Nintendont Loader v%u.%u (%s)",
 		    NIN_VERSION>>16, NIN_VERSION&0xFFFF, consoleType);
 #endif
-	PrintFormat(DEFAULT_SIZE, WHITE, MENU_POS_X, MENU_POS_Y + 20*1, "Built   : " __DATE__ " " __TIME__);
-	PrintFormat(DEFAULT_SIZE, WHITE, MENU_POS_X, MENU_POS_Y + 20*2, "Firmware: %u.%u.%u",
+	PrintFormat(DEFAULT_SIZE, 0xd3d3d3FF, MENU_POS_X, MENU_POS_Y + 20*1, "Built   : " __DATE__ " " __TIME__);
+	PrintFormat(DEFAULT_SIZE, 0xd3d3d3FF, MENU_POS_X, MENU_POS_Y + 20*2, "Firmware: %u.%u.%u",
 		    *(vu16*)0x80003140, *(vu8*)0x80003142, *(vu8*)0x80003143);
 }
 
@@ -1990,16 +1990,16 @@ void PrintInfo(void)
 void PrintButtonActions(const char *btn_home, const char *btn_a, const char *btn_b, const char *btn_x1)
 {
 	if (btn_home) {
-		PrintFormat(DEFAULT_SIZE, WHITE, MENU_POS_X + 430, MENU_POS_Y + 20*0, "Home: %s", btn_home);
+		PrintFormat(DEFAULT_SIZE, 0xd3d3d3FF, MENU_POS_X + 430, MENU_POS_Y + 20*0, "Home: %s", btn_home);
 	}
 	if (btn_a) {
-		PrintFormat(DEFAULT_SIZE, WHITE, MENU_POS_X + 430, MENU_POS_Y + 20*1, "A   : %s", btn_a);
+		PrintFormat(DEFAULT_SIZE, 0xd3d3d3FF, MENU_POS_X + 430, MENU_POS_Y + 20*1, "A   : %s", btn_a);
 	}
 	if (btn_b) {
-		PrintFormat(DEFAULT_SIZE, WHITE, MENU_POS_X + 430, MENU_POS_Y + 20*2, "B   : %s", btn_b);
+		PrintFormat(DEFAULT_SIZE, 0xd3d3d3FF, MENU_POS_X + 430, MENU_POS_Y + 20*2, "B   : %s", btn_b);
 	}
 	if (btn_x1) {
-		PrintFormat(DEFAULT_SIZE, WHITE, MENU_POS_X + 430, MENU_POS_Y + 20*3, "X/1 : %s", btn_x1);
+		PrintFormat(DEFAULT_SIZE, 0xd3d3d3FF, MENU_POS_X + 430, MENU_POS_Y + 20*3, "X/1 : %s", btn_x1);
 	}
 }
 
@@ -2018,15 +2018,15 @@ static void PrintDevInfo(void)
 	// "Boot GC Disc in Drive".
 	switch (devState) {
 		case DEV_NO_OPEN:
-			PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*4,
+			PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*4,
 				"WARNING: %s FAT device could not be opened.", s_devType);
 			break;
 		case DEV_NO_GAMES:
-			PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*4,
+			PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*4,
 				"WARNING: %s:/games/ was not found.", GetRootDevice());
 			break;
 		case DEV_NO_TITLES:
-			PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*4,
+			PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*4,
 				"WARNING: %s:/games/ contains no GC titles.", GetRootDevice());
 			break;
 		default:
@@ -2068,60 +2068,60 @@ void PrintLoadKernelError(LoadKernelError_t iosErr, int err)
 {
 	ClearScreen();
 	PrintInfo();
-	PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*4, "Failed to load IOS58 from NAND:");
+	PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*4, "Failed to load IOS58 from NAND:");
 
 	switch (iosErr)
 	{
 		case LKERR_UNKNOWN:
 		default:
 			// TODO: Add descriptions of more LoadKernel() errors.
-			PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*5, "LoadKernel() error %d occurred, returning %d.", iosErr, err);
+			PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*5, "LoadKernel() error %d occurred, returning %d.", iosErr, err);
 			break;
 
 		case LKERR_ES_GetStoredTMDSize:
-			PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*5, "ES_GetStoredTMDSize() returned %d.", err);
-			PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*7, "This usually means IOS58 is not installed.");
+			PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*5, "ES_GetStoredTMDSize() returned %d.", err);
+			PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*7, "This usually means IOS58 is not installed.");
 			if (IsWiiU())
 			{
 				// No IOS58 on Wii U should never happen...
-				PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*9, "WARNING: On Wii U, a missing IOS58 may indicate");
-				PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*10, "something is seriously wrong with the vWii setup.");
+				PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*9, "WARNING: On Wii U, a missing IOS58 may indicate");
+				PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*10, "something is seriously wrong with the vWii setup.");
 			}
 			else
 			{
 				// TODO: Check if we're using System 4.3.
-				PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*9, "Please update to Wii System 4.3 and try running");
-				PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*10, "Nintendont again.");
+				PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*9, "Please update to Wii System 4.3 and try running");
+				PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*10, "Nintendont again.");
 			}
 			break;
 
 		case LKERR_TMD_malloc:
-			PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*5, "Unable to allocate memory for the IOS58 TMD.");
+			PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*5, "Unable to allocate memory for the IOS58 TMD.");
 			break;
 
 		case LKERR_ES_GetStoredTMD:
-			PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*5, "ES_GetStoredTMD() returned %d.", err);
-			PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*7, "WARNING: IOS58 may be corrupted.");
+			PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*5, "ES_GetStoredTMD() returned %d.", err);
+			PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*7, "WARNING: IOS58 may be corrupted.");
 			break;
 
 		case LKERR_IOS_Open_shared1_content_map:
-			PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*5, "IOS_Open(\"/shared1/content.map\") returned %d.", err);
-			PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*7, "This usually means Nintendont was not started with");
-			PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*8, "AHB access permissions.");
+			PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*5, "IOS_Open(\"/shared1/content.map\") returned %d.", err);
+			PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*7, "This usually means Nintendont was not started with");
+			PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*8, "AHB access permissions.");
 			// FIXME: Create meta.xml if it isn't there?
-			PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*10, "Please ensure that meta.xml is present in your Nintendont");
-			PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*11, "application directory and that it contains a line");
-			PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*12, "with the tag <ahb_access/> .");
+			PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*10, "Please ensure that meta.xml is present in your Nintendont");
+			PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*11, "application directory and that it contains a line");
+			PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*12, "with the tag <ahb_access/> .");
 			break;
 
 		case LKERR_IOS_Open_IOS58_kernel:
-			PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*5, "IOS_Open(IOS58 kernel) returned %d.", err);
-			PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*7, "WARNING: IOS58 may be corrupted.");
+			PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*5, "IOS_Open(IOS58 kernel) returned %d.", err);
+			PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*7, "WARNING: IOS58 may be corrupted.");
 			break;
 
 		case LKERR_IOS_Read_IOS58_kernel:
-			PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*5, "IOS_Read(IOS58 kernel) returned %d.", err);
-			PrintFormat(DEFAULT_SIZE, MAROON, MENU_POS_X, MENU_POS_Y + 20*7, "WARNING: IOS58 may be corrupted.");
+			PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*5, "IOS_Read(IOS58 kernel) returned %d.", err);
+			PrintFormat(DEFAULT_SIZE, 0xFF7C7CFF, MENU_POS_X, MENU_POS_Y + 20*7, "WARNING: IOS58 may be corrupted.");
 			break;
 	}
 }
