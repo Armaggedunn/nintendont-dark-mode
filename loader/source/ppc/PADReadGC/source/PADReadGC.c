@@ -108,27 +108,18 @@ u32 PADRead(u32 calledByGame)
 	/* For Wii VC */
 	if(calledByGame && *drcAddress && WiiUGamepadSlot != NIN_CFG_MAXPAD)
 	{
-
-              if (((NIN_CFG*)0x93004000)->Config & NIN_CFG_AUTO_BOOT)
-               {
-                if(HIDPad == HID_PAD_NONE)
-                WiiUGamepadSlot = 0;
-                else
-                WiiUGamepadSlot = 1;
-                }
 		used |= (1<<WiiUGamepadSlot);
 		if(HIDPad == HID_PAD_NOT_SET)
 		{
-                  u32 HIDChan = 0;             
-                       //Force HID to the first slot without the WiiUGamepad
+			u32 HIDChan = 0;
+			//Force HID to the first slot without the WiiUGamepad
 			if (WiiUGamepadSlot == 0)
-                          {
+			{
 				HIDChan = 1;
-			  }
+			}
 			*HIDMotor = (MotorCommand[HIDChan]&0x3);
 			HIDPad = HIDChan;
-                    
-	       }
+		}
 		memInvalidate = *drcAddressAligned; //pre-aligned to 0x20 grid
 		asm volatile("dcbi 0,%0; sync" : : "b"(memInvalidate) : "memory");
 		vu8 *i2cdata = (vu8*)(*drcAddress);
@@ -375,7 +366,7 @@ u32 PADRead(u32 calledByGame)
 	if (HIDPad == HID_PAD_NOT_SET)
 		HIDPad = MaxPads;
 
-	for (chan = HIDPad; (chan < HID_PAD_NONE); (HID_CTRL->MultiIn == 3) ? (++chan) : (chan = HID_PAD_NONE)) // Run once unless MultiIn == 3
+	for (chan = HIDPad; (chan < HID_PAD_NONE); (HID_CTRL->MultiIn == 3 || HID_CTRL->MultiIn == 4) ? (++chan) : (chan = HID_PAD_NONE)) // Run once unless MultiIn == 3
 	{
 		if(HIDMemPrep == 0) // first run
 		{
@@ -438,6 +429,20 @@ u32 PADRead(u32 calledByGame)
 					PADIsBarrel[chan] = 0;
 				}
 			}
+		}
+
+		if (HID_CTRL->MultiIn == 4)		// multiple controllers, connected to one usb port via a splitter, merged into a single HID_Packet
+		{
+			if (chan == HID_CTRL->MultiInValue) break; // MultiInValue defines how many controllers we are expecting
+
+			HID_Packet = (vu8*)(0x930050F0 + (chan * 32));	//skip forward how ever many bytes in each controller
+			u32 HID_CacheEndBlock = ALIGN32(((u32)HID_Packet) + 32); //calculate upper cache block used
+			if(HID_CacheEndBlock > HIDMemPrep) //new cache block, prepare memory
+			{
+				memInvalidate = HID_CacheEndBlock;
+				asm volatile("dcbi 0,%0; sync" : : "b"(memInvalidate) : "memory");
+				HIDMemPrep = memInvalidate;
+			}			
 		}
 
 		if(calledByGame && HID_CTRL->Power.Mask &&	//exit if power configured and all power buttons pressed
