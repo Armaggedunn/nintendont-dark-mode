@@ -1,3 +1,13 @@
+### Dark Mode Information:
+* Changes the background of Nintendont to a darker background
+  * Changes text color to account for the dark background
+* [Example Images](https://imgur.com/a/oKoQvKH)
+
+### Quick Install:
+1. Download [loader.dol](loader/loader.dol?raw=true), rename to boot.dol and put it in your apps/Nintendont folder on your SD Card.
+    * If needed, download [meta.xml](nintendont/meta.xml?raw=true) and [icon.png](nintendont/icon.png?raw=true) and place them in the same folder if you've never installed Nintendont before.
+    
+**Original Nintendont Readme**
 ### Nintendont
 A Wii Homebrew Project to play GC Games on Wii and vWii on Wii U
 

@@ -212,8 +212,8 @@ void Initialise(bool autoboot)
 			if (bg_isWidescreen)
 			{
 				// Clear the sides.
-				GRRLIB_Rectangle(0, 0, 80, 480, RGBA(222, 223, 224, i), true);
-				GRRLIB_Rectangle(80+480, 0, 80, 480, RGBA(222, 223, 224, i), true);
+				GRRLIB_Rectangle(0, 0, 80, 480, RGBA(0, 0, 0, i), true);
+				GRRLIB_Rectangle(80+480, 0, 80, 480, RGBA(0, 0, 0, i), true);
 			}
 			GRRLIB_DrawImg(bg_xPos, 0, background, 0, bg_xScale, 1, RGBA(255, 255, 255, i)); // Opacity increases as i does
 			GRRLIB_Render();
@@ -225,7 +225,7 @@ void Initialise(bool autoboot)
 
 static void (*stub)() = (void*)0x80001800;
 inline void DrawBuffer(void) {
-	GRRLIB_DrawImg(0, 0, screen_buffer, 0, 1, 1, 0xFFFFFFFF);
+	GRRLIB_DrawImg(0, 0, screen_buffer, 0, 1, 1, 0x000000FF);
 }
 
 inline void UpdateScreen(void) {
@@ -364,8 +364,8 @@ inline void ClearScreen()
 	if (bg_isWidescreen)
 	{
 		// Clear the sides.
-		GRRLIB_Rectangle(0, 0, 80, 480, RGBA(222, 223, 224, 255), true);
-		GRRLIB_Rectangle(80+480, 0, 80, 480, RGBA(222, 223, 224, 255), true);
+		GRRLIB_Rectangle(0, 0, 80, 480, RGBA(0, 0, 0, 255), true);
+		GRRLIB_Rectangle(80+480, 0, 80, 480, RGBA(0, 0, 0, 255), true);
 	}
 	GRRLIB_DrawImg(bg_xPos, 0, background, 0, bg_xScale, 1, RGBA(255, 255, 255, 255));
 }
