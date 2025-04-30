@@ -61,12 +61,12 @@ static u8 devState = DEV_OK;
 // Disc format colors.
 const u32 DiscFormatColors[8] =
 {
-	BLACK,		// Full
-	0x551A00FF,	// Shrunken (dark brown)
-	0x00551AFF,	// Extracted FST
-	0x001A55FF,	// CISO
-	0x551A55FF,	// Multi-Game
-	GRAY,		// undefined
+	0xd3d3d3FF,	// Full
+	0xA56C50FF,	// Shrunken (dark brown)
+	0x50A56AFF,	// Extracted FST
+	0x506AA5FF,	// CISO
+	0xA56AA5FF,	// Multi-Game
+	0xA3A331FF,	// Oversized (dark yellow)
 	GRAY,		// undefined
 	GRAY,		// undefined
 };
