@@ -1,7 +1,8 @@
 ### Dark Mode Information:
 * Changes the background of Nintendont to a darker background
-  * Changes text color to account for the dark background
-* [Example Images](https://imgur.com/a/oKoQvKH)
+* Changes text color to account for the dark background
+
+![Example Images](https://i.imgur.com/sfPdXmJ.png)
 
 ### Quick Install:
 1. Download [loader.dol](loader/loader.dol?raw=true), rename to boot.dol and put it in your apps/Nintendont folder on your SD Card.
